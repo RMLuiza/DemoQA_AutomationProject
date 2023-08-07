@@ -4,20 +4,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BaseTest {
 
-    @Test
-    public void goToWebsite() {
-        WebDriver driver = new ChromeDriver();
+    WebDriver driver;
+
+    @BeforeMethod
+    public void setup() {
+        driver = new ChromeDriver();
         driver.get("https://demoqa.com/");
     }
 
     @Test
     public void logInTest() throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
         Thread.sleep(1000);
         WebElement element = driver.findElement(By.xpath("(//div[@class='card-up'])[6]"));
@@ -34,6 +35,6 @@ public class BaseTest {
         String actualMessage = driver.findElement(By.cssSelector("#userName-value")).getText();
         Assert.assertEquals(actualMessage, expectedMessage, "Error: username is not present");
 
-        // driver.close();
+        driver.close();
     }
 }
