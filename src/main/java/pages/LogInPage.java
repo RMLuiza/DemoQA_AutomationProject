@@ -3,6 +3,7 @@ import constants.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.Utils;
 
 public class LogInPage extends BasePage {
 
@@ -41,6 +42,10 @@ public class LogInPage extends BasePage {
 
     public String getUsernameText() {
         return this.usernameText.getText();
+    }
+
+    public void scrollToBookStore() {
+        Utils.scrollToElement(this.bookStoreApplication, this.driver);
     }
 
 }
