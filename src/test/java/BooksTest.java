@@ -1,13 +1,20 @@
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.LogInPage;
 import utils.Utils;
 
-public class BooksTest extends BaseTest{
+public class BooksTest extends BaseTest {
 
-    @Test
+    private HomePage homePage;
+    @BeforeMethod
+    @Override
+    public void setup() {
+        super.setup();
+        this.homePage = new HomePage(this.driver);
+    }
+
+    @Test(priority = 2)
     public void verifyBooksListTest() {
-        LogInPage logInPage = new LogInPage(this.driver);
         logInPage.scrollToBookStore();
         Utils.waitInSeconds(1);
         logInPage.clickBookStoreButton();
@@ -16,7 +23,37 @@ public class BooksTest extends BaseTest{
         Utils.waitInSeconds(1);
         logInPage.inputValidCredentials();
         Utils.waitInSeconds(1);
-        HomePage homePage = new HomePage(this.driver);
         homePage.printAllBooks();
     }
+
+    @Test
+    public void getBooksTitlesTest() {
+        logInPage.scrollToBookStore();
+        Utils.waitInSeconds(1);
+        logInPage.clickBookStoreButton();
+        Utils.waitInSeconds(1);
+        homePage.getAllBooksTitles();
+    }
+
+    @Test
+    public void getBooksAuthorsTest() {
+        logInPage.scrollToBookStore();
+        Utils.waitInSeconds(1);
+        logInPage.clickBookStoreButton();
+        Utils.waitInSeconds(1);
+        homePage.getAllBooksAuthors();
+    }
+
+    @Test
+    public void getBooksPublishers() {
+        logInPage.scrollToBookStore();
+        Utils.waitInSeconds(1);
+        logInPage.clickBookStoreButton();
+        Utils.waitInSeconds(1);
+        homePage.getAllBooksPublishers();
+    }
 }
+
+
+
+

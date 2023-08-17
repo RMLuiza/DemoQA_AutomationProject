@@ -16,4 +16,12 @@ public class Utils {
     public static void scrollToElement(WebElement element, WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+    public static void acceptAlert(WebDriver driver) {
+        driver.switchTo().alert().accept();
+    }
+
+    public static String getAlertText(WebDriver driver) {
+        return driver.switchTo().alert().getText();
+    }
 }

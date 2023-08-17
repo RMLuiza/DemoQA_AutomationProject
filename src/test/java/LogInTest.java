@@ -2,14 +2,12 @@ import constants.Constants;
 import constants.ErrorMessages;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LogInPage;
 import utils.Utils;
 
 public class LogInTest extends BaseTest{
 
-    @Test
+    @Test(priority = 1)
     public void logInTest() {
-        LogInPage logInPage = new LogInPage(this.driver);
         logInPage.scrollToBookStore();
         Utils.waitInSeconds(1);
         logInPage.clickBookStoreButton();
