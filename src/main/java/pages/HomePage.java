@@ -29,6 +29,9 @@ public class HomePage extends BasePage {
      @FindBy(xpath = "(//li[@id='item-3'])[5]")
      WebElement profileButton;
 
+     @FindBy(xpath = "//*[@id='app']/header/a/img")
+     WebElement pageTitle;
+
     public void printAllBooks() {
         for (WebElement element : booksList) {
             if (!element.getText().isBlank()) {
@@ -78,5 +81,9 @@ public class HomePage extends BasePage {
 
     public void clickOnProfileButton() {
         profileButton.click();
+    }
+
+    public boolean isPageTitlePresent() {
+        return pageTitle.isDisplayed();
     }
 }
