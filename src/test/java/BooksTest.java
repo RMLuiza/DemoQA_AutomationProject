@@ -45,7 +45,7 @@ public class BooksTest extends BaseTest {
     }
 
     @Test
-    public void getBooksPublishers() {
+    public void getBooksPublishersTest() {
         logInPage.scrollToBookStore();
         Utils.waitInSeconds(1);
         logInPage.clickBookStoreButton();

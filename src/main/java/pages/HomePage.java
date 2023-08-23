@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Utils;
+
 import java.util.List;
 
 public class HomePage extends BasePage {
@@ -12,22 +13,34 @@ public class HomePage extends BasePage {
     }
 
     @FindBy(css = ".rt-tr-group")
-    List<WebElement> booksList;
+    protected List<WebElement> booksList;
 
     @FindBy(css = ".action-buttons")
-    List<WebElement> booksTitles;
+    protected List<WebElement> booksTitles;
 
     @FindBy(css = ".rt-td")
-    List<WebElement> booksInfo;
+    protected List<WebElement> booksInfo;
 
     @FindBy(xpath = "//a[contains(text(), 'Git Pocket Guide')]")
-    WebElement firstBook;
+    protected WebElement firstBook;
 
-     @FindBy(xpath = "(//button[@class='btn btn-primary'])[3]")
-     WebElement addToYourCollectionButton;
+    @FindBy(xpath = "(//button[@class='btn btn-primary'])[3]")
+    protected WebElement addToYourCollectionButton;
 
-     @FindBy(xpath = "(//li[@id='item-3'])[5]")
-     WebElement profileButton;
+    @FindBy(xpath = "(//li[@id='item-3'])[5]")
+    protected WebElement profileButton;
+
+    @FindBy(xpath = "//*[@id='app']/header/a/img")
+    protected WebElement pageTitle;
+
+    @FindBy(css = ".main-header")
+    protected WebElement pageSubtitle;
+
+    @FindBy(css = ".form-control")
+    protected WebElement searchBar;
+
+    @FindBy(css = "#login")
+    protected WebElement logInButton;
 
     public void printAllBooks() {
         for (WebElement element : booksList) {
@@ -78,5 +91,22 @@ public class HomePage extends BasePage {
 
     public void clickOnProfileButton() {
         profileButton.click();
+    }
+
+    public boolean isPageTitlePresent() {
+        return pageTitle.isDisplayed();
+    }
+
+    public boolean isPageSubtitlePresent() {
+        return pageSubtitle.isDisplayed()
+                && pageSubtitle.getText().equalsIgnoreCase("Book Store");
+    }
+
+    public boolean isSearchBarPresent() {
+        return searchBar.isDisplayed();
+    }
+
+    public boolean isLoginButtonPresent() {
+        return logInButton.isDisplayed();
     }
 }
